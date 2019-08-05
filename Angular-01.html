@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular.Test.01</title>
+    <style>
+        h1{
+            color: rgb(5, 15, 107);
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <h1>ANGULAR TEST</h1>
+
+    <div ng-app="myApp" ng-controller="myCtrl" ng-init="names=[
+    {name:'Jani',country:'Norway'},
+    {name:'Hege',country:'Sweden'},
+    {name:'Kai',country:'Denmark'}]">
+        <h2>{{title}}</h2>
+        <w3-test-directive></w3-test-directive>
+        <p>Value 1: <input type="text" ng-model="firstVal"></p>
+        <p>Value 2: <input type="text" ng-model="secondVal"></p>
+        <p>Product: {{ firstVal * secondVal }}</p>
+        <hr />
+        <ul>
+            <li ng-repeat="x in names">
+                {{x.name}}, {{x.country}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var app = angular.module("myApp", []);  //angular module creation
+        app.controller("myCtrl", function($scope) {
+            $scope.title = "Multiplier Page";
+        });
+        app.directive("w3TestDirective", function() {
+            return {
+            template : "<p>[ This paragraph is made by a directive! ]</p>"
+            };
+        });
+    </script>
+</body>
+</html>
